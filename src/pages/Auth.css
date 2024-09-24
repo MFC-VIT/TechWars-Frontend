@@ -1,0 +1,18 @@
+.custom-input {
+    background-color: rgba(106, 36, 145, 0.25);
+    border: 2px solid rgba(255, 0, 0, 0.5);
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+  }
+  
+  .custom-input:focus {
+    outline: none;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 1);
+  }
+input[type="submit"]:hover{
+    border: 2px solid rgba(255, 0, 0, 0.5);
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+}
+
+body{
+    background-color: #000;
+}

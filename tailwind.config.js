@@ -30,5 +30,21 @@ export default {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    function({ addUtilities }) {
+      const newUtilities = {
+        '.text-stroke': {
+          '-webkit-text-stroke': '0.75px black',
+        },
+        '.text-stroke-2': {
+          '-webkit-text-stroke': '2px black',
+        },
+        '.text-stroke-white': {
+          '-webkit-text-stroke': '2px white',
+        },
+      }
+
+      addUtilities(newUtilities)
+    },
+  ],
 };
