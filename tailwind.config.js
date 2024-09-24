@@ -30,6 +30,17 @@ export default {
         solo_extra_italic: "soloist_extra_italic",
         star_jedi: "star_jedi",
       },
+      animation: {
+        'fade-in-out-3s': 'fadeInOut 3s infinite',
+        'fade-in-out-5s': 'fadeInOut 5s infinite',
+        'fade-in-out-7s': 'fadeInOut 7s infinite',
+        'fade-in-out-9s': 'fadeInOut 9s infinite',
+      },
+      keyframes: {
+        fadeInOut: {
+          '0%': { opacity: '0' },
+          '50%': { opacity: '1' },
+          '100%': { opacity: '0' },
     },
      plugins: [
     function({ addUtilities }) {
