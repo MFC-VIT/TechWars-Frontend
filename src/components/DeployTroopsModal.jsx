@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import videoBackground from '../assets/background.webm';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
 
 const DeployTroopsModal = ({ subTer, onDeploy }) => {
-  const [troopsInput, setTroopsInput] = useState('');
+  const [troopsInput, setTroopsInput] = useState("");
 
   const handleDeploy = () => {
     const troops = parseInt(troopsInput, 10);
@@ -11,28 +10,24 @@ const DeployTroopsModal = ({ subTer, onDeploy }) => {
       onDeploy(troops);
       alert(`Successfully deployed ${troops} troops to Sub-Ter ${subTer.id}.`);
     } else {
-      alert('Please enter a valid number of troops (0 or greater).');
+      alert("Please enter a valid number of troops (0 or greater).");
     }
   };
 
   return (
     <div className="modal-container">
-      <video autoPlay loop muted className="video-background">
-        <source src={videoBackground} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-      <div className = "time-parallel">
+      <div className="time-parallel">
         <span>Time Left: </span>
       </div>
       <div className="modal-content">
         <input
           type="number"
           className="input-field"
-          placeholder='TROOP COUNT'
+          placeholder="TROOP COUNT"
           value={troopsInput}
           onChange={(e) => setTroopsInput(e.target.value)}
           onKeyDown={(e) => {
-            if (e.key === 'Enter') {
+            if (e.key === "Enter") {
               handleDeploy();
             }
           }}

@@ -1,13 +1,16 @@
 function BackgroundVideo() {
   return (
-    <div className="h-[100%] w-[100%] fixed lg:h-[222%]">
+    <div className="h-screen w-full fixed top-0 left-0">
+      <video autoPlay loop muted className=" -z-100 w-screen    md:hidden">
+        <source src="/PlanetBg.webm" type="video/webm" />
+      </video>
       <video
         autoPlay
         loop
         muted
-        className=" -z-100 h-[100%] w-[100%] rotate-0 lg:rotate-90 lg:h-[100%]"
+        className=" -z-100 h-screen md:scale-150 lg:scale-125 hidden md:block"
       >
-        <source src="/PlanetBg.webm" type="video/webm" />
+        <source src="/PlanetBgLandscape.webm" type="video/webm" />
       </video>
     </div>
   );
