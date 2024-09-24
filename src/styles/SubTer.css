@@ -1,11 +1,11 @@
-@font-face{
-  font-family: 'GoodTimesRg';
-  src: url('../assets/fonts/GoodTimesRg.otf');
+@font-face {
+  font-family: "GoodTimesRg";
+  src: url("../assets/fonts/GoodTimesRg.otf");
 }
 
-@font-face{
-  font-family: 'BattleStarItalic';
-  src: url('../assets/fonts/BattleStarItalic.ttf');
+@font-face {
+  font-family: "BattleStarItalic";
+  src: url("../assets/fonts/BattleStarItalic.ttf");
 }
 
 :root {
@@ -41,19 +41,19 @@ body {
   height: 50px;
   right: 0%;
   top: 5%;
-  background-color: rgba(128, 128, 128, 0.5); 
-  display: flex; 
-  flex-direction: column;                
+  background-color: rgba(128, 128, 128, 0.5);
+  display: flex;
+  flex-direction: column;
   color: white;
-  font-family: BattleStarItalic, Arial;                
-  font-size: 16px;              
-  text-align: left; 
+  font-family: BattleStarItalic, Arial;
+  font-size: 16px;
+  text-align: left;
   padding: 5px;
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
 .time-view span {
-  display: block; 
+  display: block;
   margin-bottom: 5px;
 }
 
@@ -65,13 +65,13 @@ body {
 }
 
 .main-view::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('./assets/background.png');
+  background-image: url("./assets/background.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -313,20 +313,20 @@ body {
   height: 50px;
   right: 50%;
   top: 5%;
-  background-color: rgba(128, 128, 128, 0.5); 
-  display: flex; 
-  flex-direction: column;                
+  background-color: rgba(128, 128, 128, 0.5);
+  display: flex;
+  flex-direction: column;
   color: white;
-  font-family: BattleStarItalic, Arial;                
-  font-size: 16px;              
-  text-align: center; 
+  font-family: BattleStarItalic, Arial;
+  font-size: 16px;
+  text-align: center;
   padding: 5px;
-  box-sizing: border-box; 
+  box-sizing: border-box;
   transform: skew(-40deg);
 }
 
 .time-parallel span {
-  display: block; 
+  display: block;
   margin-bottom: 5px;
 }
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Border from "../assets/images/Border.png";
 import smallBorder from "../assets/images/smallBorder.png";
 import vic from "../assets/images/vic.png";

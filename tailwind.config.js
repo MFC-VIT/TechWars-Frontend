@@ -31,34 +31,34 @@ export default {
         star_jedi: "star_jedi",
       },
       animation: {
-        'fade-in-out-3s': 'fadeInOut 3s infinite',
-        'fade-in-out-5s': 'fadeInOut 5s infinite',
-        'fade-in-out-7s': 'fadeInOut 7s infinite',
-        'fade-in-out-9s': 'fadeInOut 9s infinite',
+        "fade-in-out-3s": "fadeInOut 3s infinite",
+        "fade-in-out-5s": "fadeInOut 5s infinite",
+        "fade-in-out-7s": "fadeInOut 7s infinite",
+        "fade-in-out-9s": "fadeInOut 9s infinite",
       },
       keyframes: {
         fadeInOut: {
-          '0%': { opacity: '0' },
-          '50%': { opacity: '1' },
-          '100%': { opacity: '0' },
+          "0%": { opacity: "0" },
+          "50%": { opacity: "1" },
+          "100%": { opacity: "0" },
+        },
+      },
+      plugins: [
+        function ({ addUtilities }) {
+          const newUtilities = {
+            ".text-stroke": {
+              "-webkit-text-stroke": "0.75px black",
+            },
+            ".text-stroke-2": {
+              "-webkit-text-stroke": "2px black",
+            },
+            ".text-stroke-white": {
+              "-webkit-text-stroke": "2px white",
+            },
+          };
+          addUtilities(newUtilities);
+        },
+      ],
     },
-     plugins: [
-    function({ addUtilities }) {
-      const newUtilities = {
-        '.text-stroke': {
-          '-webkit-text-stroke': '0.75px black',
-        },
-        '.text-stroke-2': {
-          '-webkit-text-stroke': '2px black',
-        },
-        '.text-stroke-white': {
-          '-webkit-text-stroke': '2px white',
-        },
-      }
-
-      addUtilities(newUtilities)
-    },
-  ],
   },
-
 };

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import PlanetBg from "../assets/PlanetBg.webm";
+import { useState } from "react";
+// import PlanetBg from "../assets/PlanetBg.webm";
 import Timer from "../components/Timer";
 import { useNavigate } from "react-router-dom";
 
@@ -60,13 +60,13 @@ const QuizPage = () => {
   return (
     <div className="w-full h-full">
       <div className="fixed bottom-0 right-0 left-0 top-0 w-full h-screen overflow-hidden -z-50">
-        <video
+        {/* <video
           src={PlanetBg}
           autoPlay
           loop
           muted
           className="object-cover w-full h-full sm:rotate-90 md:rotate-0"
-        ></video>
+        ></video> */}
       </div>
 
       <div className="h-full w-full p-4 rounded-lg">

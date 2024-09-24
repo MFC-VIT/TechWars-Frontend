@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Border from "../assets/images/Border.png";
 import smallBorder from "../assets/images/smallBorder.png";
-import vic from "../assets/images/vic.png";
+// import vic from "../assets/images/vic.png";
 import victorybackground from "../assets/images/victorybackground.png";
 import background from "../assets/images/background.png";
 import space from "../assets/images/space.png";
