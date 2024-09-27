@@ -9,7 +9,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "../styles/admin.css";
 import { STARTEND_QUIZ } from "../lib/constants";
-export default function Admin() {
+export default function Volunteer() {
   const [stage, setStage] = useState(0);
   const [lobbyName, setLobbyName] = useState("");
   const [adminName, setAdminName] = useState("");
@@ -92,41 +92,6 @@ export default function Admin() {
       toast.error("Something went wrong while " + action + "ing quiz");
     }
   }
-  async function handleChangeTerritory() {
-    if (
-      teamName === "" ||
-      adminName === "" ||
-      territoryName === "" ||
-      territoryScore === ""
-    ) {
-      toast.error("Please fill all the fields");
-      return;
-    }
-    try {
-      const response = await axios.patch(
-        TERRITORY_CHANGE,
-        {
-          name: territoryName,
-          score: parseInt(territoryScore),
-        },
-        {
-          headers: {
-            adminname: adminName,
-            teamname: teamName,
-          },
-        }
-      );
-      console.log(response);
-      if (response.data.success) {
-        toast.success("Territory changed successfully");
-      } else {
-        toast.error("Something went wrong while changing territory");
-      }
-    } catch (error) {
-      console.log(error);
-      toast.error("Something went wrong while changing territory");
-    }
-  }
   async function handleGetScores() {
     try {
       const response = await axios.get(GET_SCORE, {
@@ -156,85 +121,8 @@ export default function Admin() {
   }, [lobbies]);
   return (
     <div className="w-full min-h-screen bg-[#111111] p-4 text-white">
-      <h1 className="text-3xl font-battle_star text-white">Admin Panel</h1>
-
+      <h1 className="text-3xl font-battle_star text-white">Volunteer Panel</h1>
       <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="w-full border-2 p-8 border-white flex flex-col gap-2">
-          <h1 className="text-xl">Territory Management</h1>
-          <input
-            type="text"
-            placeholder="admin Name"
-            onChange={(e) => {
-              setAdminName(e.target.value);
-            }}
-          />
-          <input
-            type="text"
-            onChange={(e) => {
-              setTeamName(e.target.value);
-            }}
-            placeholder="Team Name"
-          />
-          <input
-            type="text"
-            onChange={(e) => {
-              setTerritoryName(e.target.value);
-            }}
-            placeholder="Name of the territory"
-          />
-          <input
-            type="text"
-            onChange={(e) => {
-              setTerritoryScore(e.target.value);
-            }}
-            placeholder="Score of the territory"
-          />
-          <button
-            type="button"
-            className="text-white bg-red-500 py-3 rounded-md"
-            onClick={handleChangeTerritory}
-          >
-            Set Territory
-          </button>
-        </div>
-        <div className="w-full border-2 p-8 border-white flex flex-col gap-2">
-          <h1 className="text-xl">Territory Management</h1>
-          <input
-            type="text"
-            placeholder="admin Name"
-            onChange={(e) => {
-              setAdminName(e.target.value);
-            }}
-          />
-          <input
-            type="text"
-            onChange={(e) => {
-              setTeamName(e.target.value);
-            }}
-            placeholder="Team Name"
-          />
-          <input
-            type="text"
-            onChange={(e) => {
-              setTerritoryName(e.target.value);
-            }}
-            placeholder="Name of the territory"
-          />
-          <input
-            type="text"
-            onChange={(e) => {
-              setTerritoryScore(e.target.value);
-            }}
-            placeholder="Score of the territory"
-          />
-          <button
-            type="button"
-            className="text-white bg-red-500 py-3 rounded-md"
-            onClick={handleChangeTerritory}
-          >
-            Set Territory
-          </button>
-        </div>
         <div className="w-full">
           <div className="w-full flex flex-col gap-2  p-8 border-2 border-white text-white">
             <h1 className="text-2xl">Create Lobby</h1>
@@ -250,7 +138,7 @@ export default function Admin() {
             <input
               type="text"
               id="adminName"
-              placeholder="Admin Name"
+              placeholder="Volunteer Name"
               className="bg-black text-white px-3 py-2"
               onChange={(e) => {
                 setAdminName(e.target.value);
@@ -285,7 +173,7 @@ export default function Admin() {
           <h1 className="text-xl">Add Teams in Lobby</h1>
           <input
             type="text"
-            placeholder="admin Name"
+            placeholder="volunteer Name"
             onChange={(e) => {
               setAdminName(e.target.value);
             }}
@@ -316,7 +204,7 @@ export default function Admin() {
           <h1 className="text-xl">Start/Stop Quiz</h1>
           <input
             type="text"
-            placeholder="admin Name"
+            placeholder="volunteer Name"
             onChange={(e) => {
               setAdminName(e.target.value);
             }}
@@ -354,7 +242,7 @@ export default function Admin() {
           <h1 className="text-xl">GET SCORES</h1>
           <input
             type="text"
-            placeholder="admin Name"
+            placeholder="volunteer Name"
             onChange={(e) => {
               setAdminName(e.target.value);
             }}

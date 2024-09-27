@@ -1,4 +1,4 @@
-input {
+input[type="text"] {
   background: black;
   padding-block: 0.75rem;
   padding-inline: 0.5rem;

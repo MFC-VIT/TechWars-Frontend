@@ -10,6 +10,7 @@ import { AuthProvider } from "./Providers/AuthProvider";
 import GalaxyMap from "./sections/GalaxyMap";
 import { QuizHandler } from "./Providers/QuizHandler";
 import Admin from "./pages/Admin";
+import Volunteer from "./pages/Volunteer";
 function App() {
   return (
     <>
@@ -43,15 +44,8 @@ function App() {
               </AuthProvider>
             }
           />
-          <Route
-            path="/admin"
-            element={
-              <AuthProvider>
-                <Admin />
-              </AuthProvider>
-            }
-          />
-
+          <Route path="/admin-mfc" element={<Admin />} />
+          <Route path="/volunteer" element={<Volunteer />} />
           {/* <Route path="/territory/:id" element={<TerritoryPage />} /> */}
         </Routes>
       </Router>
