@@ -9,6 +9,7 @@ import Lobby from "./pages/Lobby";
 import { AuthProvider } from "./Providers/AuthProvider";
 import GalaxyMap from "./sections/GalaxyMap";
 import { QuizHandler } from "./Providers/QuizHandler";
+import Admin from "./pages/Admin";
 function App() {
   return (
     <>
@@ -16,9 +17,41 @@ function App() {
       <Router>
         <Routes>
           <Route exact path="/" element={<AuthenticationPage />} />
-          <Route path="/lobby" element={<AuthProvider><Lobby /></AuthProvider>} />
-          <Route path="/map" element={<AuthProvider><GalaxyMap /></AuthProvider>} />
-          <Route path="/quiz" element={<AuthProvider><QuizHandler><QuizPage /></QuizHandler></AuthProvider>} />
+          <Route
+            path="/lobby"
+            element={
+              <AuthProvider>
+                <Lobby />
+              </AuthProvider>
+            }
+          />
+          <Route
+            path="/map"
+            element={
+              <AuthProvider>
+                <GalaxyMap />
+              </AuthProvider>
+            }
+          />
+          <Route
+            path="/quiz"
+            element={
+              <AuthProvider>
+                <QuizHandler>
+                  <QuizPage />
+                </QuizHandler>
+              </AuthProvider>
+            }
+          />
+          <Route
+            path="/admin"
+            element={
+              <AuthProvider>
+                <Admin />
+              </AuthProvider>
+            }
+          />
+
           {/* <Route path="/territory/:id" element={<TerritoryPage />} /> */}
         </Routes>
       </Router>
