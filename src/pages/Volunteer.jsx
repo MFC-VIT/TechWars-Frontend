@@ -18,6 +18,7 @@ export default function Volunteer() {
   const [territoryScore, setTerritoryScore] = useState("");
   const [territoryName, setTerritoryName] = useState("");
   const [teamScoreData, setTeamScoreData] = useState([]);
+  const [mutex, setMutex] = useState(false);
   async function handleCreateLobby() {
     try {
       console.log(adminName);
@@ -25,6 +26,7 @@ export default function Volunteer() {
         toast.error("Please fill all the fields");
         return;
       }
+      setMutex(true);
       const response = await axios.post(
         CREATE_LOBBY,
         {
@@ -44,6 +46,8 @@ export default function Volunteer() {
       }
     } catch {
       toast.error("Something went wrong while creating lobby");
+    } finally {
+      setMutex(false);
     }
   }
   async function handleTeamMigrate() {
@@ -52,6 +56,7 @@ export default function Volunteer() {
       return;
     }
     try {
+      setMutex(true);
       const response = await axios.post(
         MIGRATE_TEAM,
         {},
@@ -68,10 +73,13 @@ export default function Volunteer() {
       }
     } catch {
       toast.error("Something went wrong while migrating team");
+    } finally {
+      setMutex(false);
     }
   }
   async function handleQuizStartEnd(action) {
     try {
+      setMutex(true);
       const response = await axios.post(
         `${STARTEND_QUIZ}${action}`,
         {},
@@ -89,10 +97,13 @@ export default function Volunteer() {
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong while " + action + "ing quiz");
+    } finally {
+      setMutex(false);
     }
   }
   async function handleGetScores() {
     try {
+      setMutex(true);
       const response = await axios.get(GET_SCORE, {
         headers: {
           lobbyname: lobbyName,
@@ -108,6 +119,8 @@ export default function Volunteer() {
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong while fetching scores");
+    } finally {
+      setMutex(false);
     }
   }
   useEffect(() => {
@@ -155,6 +168,7 @@ export default function Volunteer() {
               type="button"
               className="text-white bg-red-500 py-3 rounded-md"
               onClick={handleCreateLobby}
+              disabled={mutex}
             >
               Create Lobby
             </button>
@@ -195,6 +209,7 @@ export default function Volunteer() {
             type="button"
             className="text-white bg-red-500 py-3 rounded-md"
             onClick={handleTeamMigrate}
+            disabled={mutex}
           >
             Migrate Team
           </button>
@@ -222,6 +237,7 @@ export default function Volunteer() {
               onClick={() => {
                 handleQuizStartEnd("start");
               }}
+              disabled={mutex}
             >
               Start
             </button>
@@ -231,6 +247,7 @@ export default function Volunteer() {
               onClick={() => {
                 handleQuizStartEnd("end");
               }}
+              disabled={mutex}
             >
               End
             </button>
@@ -258,6 +275,7 @@ export default function Volunteer() {
             type="button"
             className="text-white bg-red-500 py-3 rounded-md"
             onClick={handleGetScores}
+            disabled={mutex}
           >
             Get Scores
           </button>

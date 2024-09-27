@@ -12,6 +12,7 @@ import "../styles/admin.css";
 import { STARTEND_QUIZ } from "../lib/constants";
 export default function Admin() {
   const [lobbyName, setLobbyName] = useState("");
+  const [mutex, setMutex] = useState(false);
   const [adminName, setAdminName] = useState("");
   const [lobbyLimit, setLobbyLimit] = useState(6);
   const [lobbies, setLobbies] = useState([]);
@@ -27,6 +28,7 @@ export default function Admin() {
         toast.error("Please fill all the fields");
         return;
       }
+      setMutex(true);
       const response = await axios.post(
         CREATE_LOBBY,
         {
@@ -46,14 +48,18 @@ export default function Admin() {
       }
     } catch {
       toast.error("Something went wrong while creating lobby");
+    } finally {
+      setMutex(false);
     }
   }
+
   async function handleTeamMigrate() {
     if (adminName === "" || lobbyName === "" || teamName === "") {
       toast.error("Please fill all the fields");
       return;
     }
     try {
+      setMutex(false);
       const response = await axios.post(
         MIGRATE_TEAM,
         {},
@@ -70,10 +76,13 @@ export default function Admin() {
       }
     } catch {
       toast.error("Something went wrong while migrating team");
+    } finally {
+      setMutex(false);
     }
   }
   async function handleQuizStartEnd(action) {
     try {
+      setMutex(true);
       const response = await axios.post(
         `${STARTEND_QUIZ}${action}`,
         {},
@@ -91,6 +100,8 @@ export default function Admin() {
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong while " + action + "ing quiz");
+    } finally {
+      setMutex(false);
     }
   }
   async function handleChangeTerritory() {
@@ -104,6 +115,7 @@ export default function Admin() {
       return;
     }
     try {
+      setMutex(true);
       const response = await axios.patch(
         TERRITORY_CHANGE,
         {
@@ -126,10 +138,13 @@ export default function Admin() {
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong while changing territory");
+    } finally {
+      setMutex(false);
     }
   }
   async function handleGetScores() {
     try {
+      setMutex(true);
       const response = await axios.get(GET_SCORE, {
         headers: {
           lobbyname: lobbyName,
@@ -145,10 +160,13 @@ export default function Admin() {
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong while fetching scores");
+    } finally {
+      setMutex(false);
     }
   }
   async function handleTeamScoreChange() {
     try {
+      setMutex(true);
       const response = await axios.patch(
         UPDATE_SCORE,
         {
@@ -170,6 +188,8 @@ export default function Admin() {
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong while updating score");
+    } finally {
+      setMutex(false);
     }
   }
   useEffect(() => {
@@ -250,6 +270,7 @@ export default function Admin() {
             type="button"
             className="text-white bg-red-500 py-3 rounded-md"
             onClick={handleTeamScoreChange}
+            disabled={mutex}
           >
             Change Score
           </button>
@@ -287,6 +308,7 @@ export default function Admin() {
               type="button"
               className="text-white bg-red-500 py-3 rounded-md"
               onClick={handleCreateLobby}
+              disabled={mutex}
             >
               Create Lobby
             </button>
@@ -327,6 +349,7 @@ export default function Admin() {
             type="button"
             className="text-white bg-red-500 py-3 rounded-md"
             onClick={handleTeamMigrate}
+            disabled={mutex}
           >
             Migrate Team
           </button>
@@ -354,6 +377,7 @@ export default function Admin() {
               onClick={() => {
                 handleQuizStartEnd("start");
               }}
+              disabled={mutex}
             >
               Start
             </button>
@@ -363,6 +387,7 @@ export default function Admin() {
               onClick={() => {
                 handleQuizStartEnd("end");
               }}
+              disabled={mutex}
             >
               End
             </button>
@@ -390,6 +415,7 @@ export default function Admin() {
             type="button"
             className="text-white bg-red-500 py-3 rounded-md"
             onClick={handleGetScores}
+            disabled={mutex}
           >
             Get Scores
           </button>
