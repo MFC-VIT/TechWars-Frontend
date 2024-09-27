@@ -8,27 +8,39 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
+import { TEAM_LOGIN } from "../lib/constants";
+import { useSetRecoilState } from "recoil";
+import { teamAtom } from "../atoms/teamAtom";
 const AuthenticationPage = () => {
   const navigate = useNavigate();
   const [lobbyId, setLobbyId] = useState("");
   const [teamName, setTeamName] = useState("");
   const [password, setPassword] = useState("");
+  const setTeamState = useSetRecoilState(teamAtom);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!lobbyId || !teamName || !password) {
       toast.error("Please fill all the fields");
     }
-    const response = await axios.post("/login", {
-      teamName,
+    // if (Cookies.get("token")) navigate("/lobby");
+    const response = await axios.post(TEAM_LOGIN, {
+      teamname: teamName,
       lobbyname: lobbyId,
       password,
     });
-    console.log("hjere");
-    if (!response.success) {
+    // console.log("data: ", response.data);
+    if (!response.data.success) {
       toast.error("Invalid credentials");
+    } else {
+      setTeamState(teamState=>({
+        ...teamState,
+        name: teamName,
+        isQuizOver: false
+      }))
+      Cookies.set("token", response.data.token);
+      return navigate("/lobby");
     }
-    Cookies.set("token", response.token);
-    navigate("/lobby");
   };
 
   return (
@@ -60,6 +72,7 @@ const AuthenticationPage = () => {
               placeholder="TEAM NAME"
               value={teamName}
               name="teamName"
+              autoCapitalize="none"
               onChange={(e) => setTeamName(e.target.value)}
               className="custom-input p-[3%] w-[100%] h-[20%] rounded-2xl text-center text-[100%] font-solo_extra_italic text-red-600 placeholder-red-600 text-stroke md:text-2xl xl:text-3xl"
               autoComplete="off"
