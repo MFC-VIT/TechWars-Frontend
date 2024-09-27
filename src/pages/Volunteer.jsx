@@ -10,7 +10,6 @@ import { toast } from "react-toastify";
 import "../styles/admin.css";
 import { STARTEND_QUIZ } from "../lib/constants";
 export default function Volunteer() {
-  const [stage, setStage] = useState(0);
   const [lobbyName, setLobbyName] = useState("");
   const [adminName, setAdminName] = useState("");
   const [lobbyLimit, setLobbyLimit] = useState(6);
@@ -262,6 +261,18 @@ export default function Volunteer() {
           >
             Get Scores
           </button>
+        </div>
+        <div className="">
+          <h1>Team Score for the lobby</h1>
+          <div className="w-full flex flex-col gap-1">
+            {teamScoreData.map((data, index) => (
+              <div className="bg-gray-800 px-4 py-2  rounded-md" key={index}>
+                <h1>
+                  {data.name} - {data.score}
+                </h1>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

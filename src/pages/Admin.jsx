@@ -4,13 +4,13 @@ import {
   GET_SCORE,
   MIGRATE_TEAM,
   TERRITORY_CHANGE,
+  UPDATE_SCORE,
 } from "../lib/constants";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "../styles/admin.css";
 import { STARTEND_QUIZ } from "../lib/constants";
 export default function Admin() {
-  const [stage, setStage] = useState(0);
   const [lobbyName, setLobbyName] = useState("");
   const [adminName, setAdminName] = useState("");
   const [lobbyLimit, setLobbyLimit] = useState(6);
@@ -19,6 +19,7 @@ export default function Admin() {
   const [territoryScore, setTerritoryScore] = useState("");
   const [territoryName, setTerritoryName] = useState("");
   const [teamScoreData, setTeamScoreData] = useState([]);
+  const [teamScore, setTeamScore] = useState("");
   async function handleCreateLobby() {
     try {
       console.log(adminName);
@@ -146,6 +147,31 @@ export default function Admin() {
       toast.error("Something went wrong while fetching scores");
     }
   }
+  async function handleTeamScoreChange() {
+    try {
+      const response = await axios.patch(
+        UPDATE_SCORE,
+        {
+          score: parseInt(teamScore),
+        },
+        {
+          headers: {
+            adminname: adminName,
+            teamname: teamName,
+          },
+        }
+      );
+      if (!response.data.success) {
+        toast.error("Something went wrong while updating score");
+        return;
+      }
+      console.log(response);
+      toast.success("Score updated successfully");
+    } catch (error) {
+      console.log(error);
+      toast.error("Something went wrong while updating score");
+    }
+  }
   useEffect(() => {
     if (localStorage.getItem("lobbies")) {
       setLobbies(JSON.parse(localStorage.getItem("lobbies")));
@@ -198,7 +224,7 @@ export default function Admin() {
           </button>
         </div>
         <div className="w-full border-2 p-8 border-white flex flex-col gap-2">
-          <h1 className="text-xl">Territory Management</h1>
+          <h1 className="text-xl">Score Management</h1>
           <input
             type="text"
             placeholder="admin Name"
@@ -216,23 +242,16 @@ export default function Admin() {
           <input
             type="text"
             onChange={(e) => {
-              setTerritoryName(e.target.value);
+              setTeamScore(e.target.value);
             }}
-            placeholder="Name of the territory"
-          />
-          <input
-            type="text"
-            onChange={(e) => {
-              setTerritoryScore(e.target.value);
-            }}
-            placeholder="Score of the territory"
+            placeholder="Score of the team"
           />
           <button
             type="button"
             className="text-white bg-red-500 py-3 rounded-md"
-            onClick={handleChangeTerritory}
+            onClick={handleTeamScoreChange}
           >
-            Set Territory
+            Change Score
           </button>
         </div>
         <div className="w-full">
@@ -374,6 +393,18 @@ export default function Admin() {
           >
             Get Scores
           </button>
+        </div>
+        <div className="">
+          <h1>Team Score for the lobby</h1>
+          <div className="w-full flex flex-col gap-1">
+            {teamScoreData.map((data, index) => (
+              <div className="bg-gray-800 px-4 py-2  rounded-md" key={index}>
+                <h1>
+                  {data.name} - {data.score}
+                </h1>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

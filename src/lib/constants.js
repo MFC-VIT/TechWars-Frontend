@@ -16,3 +16,4 @@ export const MIGRATE_TEAM = BASE_URL + "/admin/team/migrate/force";
 export const STARTEND_QUIZ = BASE_URL + "/admin/quiz/";
 export const TERRITORY_CHANGE = BASE_URL + "/admin/territory/transfer";
 export const GET_SCORE = BASE_URL + "/admin/lobby";
+export const UPDATE_SCORE = BASE_URL + "/admin/team/score";

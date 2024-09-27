@@ -4,30 +4,30 @@
 
 @font-face {
   font-family: aquire;
-  src: url(../src/assets/fonts/Aquire.otf);
+  src: url("/fonts/Aquire.otf");
 }
 
 @font-face {
   font-family: battle_star_italic;
-  src: url(../src/assets/fonts/BattleStarItalic.ttf);
+  src: url("/fonts/BattleStarItalic.ttf");
 }
 
 @font-face {
   font-family: exo_space;
-  src: url(../src/assets/fonts/ExoSpace.ttf);
+  src: url("/fonts/ExoSpace.ttf");
 }
 
 @font-face {
   font-family: good_times_regular;
-  src: url(../src/assets/fonts/GoodTimesRg.otf);
+  src: url("/fonts/GoodTimesRg.otf");
 }
 
 @font-face {
   font-family: soloist_extra_italic;
-  src: url(../src/assets/fonts/SoloistExtraItalic.otf);
+  src: url("/fonts/SoloistExtraItalic.otf");
 }
 
 @font-face {
   font-family: star_jedi;
-  src: url(../src/assets/fonts/StarJedi.ttf);
+  src: url("/fonts/StarJedi.ttf");
 }
