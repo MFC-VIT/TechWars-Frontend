@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+// import { QUIZ_TIME_LIMIT } from "../lib/constants";
+import PropTypes from "prop-types"
 
-function Timer() {
-  const [seconds, setSeconds] = useState(300); // 5 minutes in seconds
+function Timer({ startTime, timeLimit }) {
+  const [seconds, setSeconds] = useState(timeLimit-startTime); // 5 minutes in seconds
   const [isActive, setIsActive] = useState(true);
   const navigate = useNavigate();
 
@@ -19,9 +21,9 @@ function Timer() {
   useEffect(() => {
     if (seconds === 0) {
       setIsActive(false);
-      navigate("/lobby");
+      return navigate("/lobby");
     }
-  }, [seconds]);
+  }, [seconds, navigate]);
 
   const minutes = Math.floor(seconds / 60);
   const remainingSeconds = seconds % 60;
@@ -39,4 +41,10 @@ function Timer() {
   );
 }
 
+Timer.propTypes = {
+  startTime: PropTypes.number,
+  timeLimit: PropTypes.number
+}
+
 export default Timer;
+

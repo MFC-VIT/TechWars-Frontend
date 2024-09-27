@@ -15,11 +15,6 @@
   word-spacing: 1px;
 }
 
-.timer {
-  background-color: rgba(128, 128, 128, 0.5);
-  padding: 10px;
-}
-
 .teams {
   height: 80vh;
   width: 100%;
@@ -85,10 +80,6 @@
     width: 15vw;
   }
 
-  .timer {
-    font-size: 0.8em;
-  }
-
   .lobbyLogo {
     height: 15vh;
   }
@@ -126,10 +117,6 @@
   .team img {
     width: 20vw;
     max-width: 80px;
-  }
-
-  .timer {
-    font-size: 0.7em;
   }
 
   .lobbyLogo {
