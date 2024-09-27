@@ -5,7 +5,7 @@ export const BASE_URL =
   "/api/v1";
 
 export const TEAM_LOGIN = BASE_URL + "/team/login";
-export const TEAM_START_QUIZ = BASE_URL + "/quiz/start?questions=10";
+export const TEAM_START_QUIZ = BASE_URL + "/quiz/start?questions=20";
 export const QUIZ_VERIFY_ANS = BASE_URL + "/quiz/question/verify";
 export const GET_TEAM_IN_LOBBY = BASE_URL + "/lobby/teams";
 export const SUBMIT_QUIZ = BASE_URL + "/quiz/submit";

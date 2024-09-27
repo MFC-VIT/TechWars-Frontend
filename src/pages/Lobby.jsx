@@ -76,6 +76,7 @@ const Lobby = () => {
           className="text-xl text-white bg-black px-12 py-3 rounded-md w-fit absolute top-2 right-2 font-battle_star"
           onClick={() => {
             Cookies.remove("token");
+            navigate("/");
           }}
         >
           Logout
