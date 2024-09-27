@@ -33,11 +33,11 @@ const AuthenticationPage = () => {
     if (!response.data.success) {
       toast.error("Invalid credentials");
     } else {
-      setTeamState(teamState=>({
+      setTeamState((teamState) => ({
         ...teamState,
         name: teamName,
-        isQuizOver: false
-      }))
+        isQuizOver: false,
+      }));
       Cookies.set("token", response.data.token);
       return navigate("/lobby");
     }
@@ -74,7 +74,7 @@ const AuthenticationPage = () => {
               name="teamName"
               autoCapitalize="none"
               onChange={(e) => setTeamName(e.target.value)}
-              className="custom-input p-[3%] w-[100%] h-[20%] rounded-2xl text-center text-[100%] font-solo_extra_italic text-red-600 placeholder-red-600 text-stroke md:text-2xl xl:text-3xl"
+              className="custom-input p-[3%] w-[100%] h-[20%] rounded-2xl text-center text-[100%] font-exo_space font-semibold text-red-600 placeholder-red-600 text-stroke md:text-2xl xl:text-3xl"
               autoComplete="off"
             />
             <input
@@ -83,7 +83,7 @@ const AuthenticationPage = () => {
               value={lobbyId}
               name="lobbyId"
               onChange={(e) => setLobbyId(e.target.value)}
-              className="custom-input p-[3%] w-[100%] h-[20%] rounded-2xl text-center text-[100%] font-solo_extra_italic text-red-600 placeholder-red-600 text-stroke md:text-2xl xl:text-3xl"
+              className="custom-input p-[3%] w-[100%] h-[20%] rounded-2xl text-center text-[100%] font-exo_space font-semibold text-red-600 placeholder-red-600 text-stroke md:text-2xl xl:text-3xl"
               autoComplete="off"
             />
             <input
@@ -92,7 +92,7 @@ const AuthenticationPage = () => {
               value={password}
               name="password"
               onChange={(e) => setPassword(e.target.value)}
-              className="custom-input p-[3%] w-[100%] h-[20%] rounded-2xl text-center text-[100%] font-solo_extra_italic text-red-600 placeholder-red-600 text-stroke md:text-2xl xl:text-3xl"
+              className="custom-input p-[3%] w-[100%] h-[20%] rounded-2xl text-center text-[100%] font-exo_space font-semibold text-red-600 placeholder-red-600 text-stroke md:text-2xl xl:text-3xl"
             />
             <input
               type="submit"

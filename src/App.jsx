@@ -11,6 +11,7 @@ import GalaxyMap from "./sections/GalaxyMap";
 import { QuizHandler } from "./Providers/QuizHandler";
 import Admin from "./pages/Admin";
 import Volunteer from "./pages/Volunteer";
+import Leaderboard from "./pages/Leaderboard";
 function App() {
   return (
     <>
@@ -45,6 +46,8 @@ function App() {
             }
           />
           <Route path="/admin-mfc" element={<Admin />} />
+          <Route path="/leaderboard" element={<Leaderboard />} />
+
           <Route path="/volunteer" element={<Volunteer />} />
           {/* <Route path="/territory/:id" element={<TerritoryPage />} /> */}
         </Routes>
